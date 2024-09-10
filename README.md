@@ -2,11 +2,11 @@
 
 ## Description
 
-This project extracts the infomrmation about Zurich marathon runners from Datasport and provide visualization split per age group and marathon year.
+This project extracts the information about Zurich marathon runners from Datasport and provides a dashboard visualization split per age group and marathon year.
 It features:
-- a web parsting agent ```./webparser/parser.py``` 
+- a web parsing agent ```./webparser/parser.py``` 
 which scrapes the data for Zurich marathon runners for 2014-2018
-- a dashboard ```./visualization/app.py``` which visulizes runners per age group and marathin year
+- a dashboard ```./visualization/app.py``` which visulizes runners per age group and marathon year
 
 ![Alt text](./figures/dashboard.jpg)
 ### Setting Up Your Environment
