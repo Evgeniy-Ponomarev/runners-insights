@@ -37,7 +37,22 @@ def scrape_runners_data(years):
     for year in years:
         for letter in letters:
             url = f"https://services.datasport.com/{year}/lauf/zuerich/alfa{letter}.htm"
-            page = requests.get(url)
+            try:
+                # Try making a GET request to the URL
+                page = requests.get(url, timeout=10)
+                page.raise_for_status()  # Raise HTTPError for bad responses (4xx, 5xx)
+            except requests.exceptions.HTTPError as http_err:
+                print(f"HTTP error occurred: {http_err} - URL: {url}")
+                continue  # Skip to the next URL in case of HTTP errors
+            except requests.exceptions.ConnectionError as conn_err:
+                print(f"Connection error occurred: {conn_err} - URL: {url}")
+                continue  # Skip to the next URL in case of connection errors
+            except requests.exceptions.Timeout as timeout_err:
+                print(f"Timeout error occurred: {timeout_err} - URL: {url}")
+                continue  # Skip to the next URL in case of timeouts
+            except requests.exceptions.RequestException as req_err:
+                print(f"General error occurred: {req_err} - URL: {url}")
+                continue  # Skip to the next URL in case of any other request exceptions
             soup = BeautifulSoup(page.text, "html.parser")
             runners = [
                 data.get_text()
