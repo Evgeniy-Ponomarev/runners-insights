@@ -14,7 +14,7 @@ which scrapes the data for Zurich marathon runners for 2014-2018
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/your-repo.git
+   git clone https://github.com/Evgeniy-Ponomarev/runners-insights.git
    ```
 2. **Install dependencies**:
    ```bash
